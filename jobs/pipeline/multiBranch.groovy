@@ -3,6 +3,7 @@ multibranchPipelineJob('MultiBranch') {
     displayName('MultiBranch-Pipeline')
     branchSources {
         git {
+            id('multibranchPipelineJob')
             remote('https://github.com/petkovp/multiBranch.git')
 
         }
