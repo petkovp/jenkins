@@ -10,7 +10,7 @@ multibranchPipelineJob('MultiBranch') {
     }
      factory {
         workflowBranchProjectFactory {
-        scriptPath('jenkinsfile')
+        scriptPath('Jenkinsfile')
         }
     }
 }
