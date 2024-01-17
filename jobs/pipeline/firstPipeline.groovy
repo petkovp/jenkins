@@ -12,7 +12,7 @@ pipelineJob('First-Pipeline') {
                 branch('main')
             }
           }
-          scriptPath("Jenkins")
+          scriptPath("Jenkinsfile")
       }
     }
  }
