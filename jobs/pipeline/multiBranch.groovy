@@ -15,7 +15,6 @@ multibranchPipelineJob('MultiBranch') {
     }
     orphanedItemStrategy {
         discardOldItems {
-        numToKeep(1)
     }
   }
 }
