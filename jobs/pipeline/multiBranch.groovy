@@ -17,4 +17,5 @@ multibranchPipelineJob('MultiBranch') {
         discardOldItems {
         numToKeep(20)
     }
+  }
 }
