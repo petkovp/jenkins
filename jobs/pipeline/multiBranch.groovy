@@ -8,6 +8,10 @@ multibranchPipelineJob('MultiBranch') {
 
         }
     }
+    orphanedItemStrategy {
+    discardOldItems {
+        numToKeep(20)
+    }
      factory {
         workflowBranchProjectFactory {
         scriptPath('Jenkinsfile')
