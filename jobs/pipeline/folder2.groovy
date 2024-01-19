@@ -1,3 +1,3 @@
 folder('Payment-Gateway-Pipeline') {
-    displayName('Payment Gateway')
+    displayName('Payment Gateway-Pipeline')
 }
