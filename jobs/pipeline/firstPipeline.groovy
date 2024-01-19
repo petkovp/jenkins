@@ -1,4 +1,4 @@
-pipelineJob('Payment-Gateway-Pipeline/First-Pipeline') {
+pipelineJob('Payment Gateway Pipeline/First-Pipeline') {
     description('Pipeline Job')
     displayName('First-Pipeline')
     definition {
