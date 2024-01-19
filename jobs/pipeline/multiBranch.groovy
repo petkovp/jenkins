@@ -1,4 +1,4 @@
-multibranchPipelineJob('MultiBranch') {
+multibranchPipelineJob('Payment-Gateway/MultiBranch') {
     description('MultiBranch Pipeline Job')
     displayName('MultiBranch-Pipeline')
     branchSources {
