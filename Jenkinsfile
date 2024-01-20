@@ -10,11 +10,11 @@ pipeline {
     }
     stage('AWS S3 List') {
       steps {
-        withAWS(region:'eu-central-1',credentials:'aws-credentials') {
+        withAWS(credentials:'aws-credentials') {
           sh '''
           aws s3 ls
           '''
-          }
+        }
       }
     }
   }
