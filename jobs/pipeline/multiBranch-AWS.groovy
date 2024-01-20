@@ -1,4 +1,4 @@
-multibranchPipelineJob('Payment-Gateway/MultiBranch-AWS') {
+multibranchPipelineJob('Payment-Gateway/MultiBranchAWS') {
     description('MultiBranch AWS Pipeline Job')
     displayName('MultiBranch-Pipeline-AWS')
     branchSources {
