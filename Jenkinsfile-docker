@@ -21,7 +21,6 @@ environment {
       steps {
         container('docker') {
           sh '''
-          docker login docker.io
           /kaniko/executor  --cache-ttl=48h --context . --dockerfile Dockerfile --destination ${REGISTRY}:${GIT_HASH}
           '''
         }
