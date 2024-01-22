@@ -1,15 +1,51 @@
 pipeline {
+
+environment {
+   BRANCH = 'main'
+   REGISTRY = 'petkovp/ubuntu'
+   GIT_HASH = GIT_COMMIT.take(7)
+}
   agent {
-    label 'nginx'
-  }
-  stages {
-    stage('Build') {
-      steps {
-        echo "building"
-        sh '''
-        curl -v abv.bg
+    kubernetes {
+      yaml '''
+        apiVersion: v1
+        kind: Pod
+        spec:
+          containers:
+          - name: docker
+            image: gcr.io/kaniko-project/executor:debug
+            command:
+            - cat
+            tty: true
+            volumeMounts:
+             - mountPath: /var/run/docker.sock
+               name: docker-sock
+          volumes:
+          - name: docker-sock
+            hostPath:
+              path: /var/run/docker.sock
         '''
-      }
     }
   }
+
+
+  stages {
+    stage('Clone') {
+      steps {
+        container('docker') {
+          git branch: BRANCH, poll: false, url: 'https://github.com/petkovp/jenkins.git'
+        }
+      }
+    }
+    stage('Build and Publish') {
+     when {
+        branch 'main'
+     }
+      steps {
+        container('docker') {
+          sh '/kaniko/executor  --cache-ttl=48h --context . --dockerfile Dockerfile --destination ${REGISTRY}:${GIT_HASH}'
+        }
+      }
+    }
+}
 }
