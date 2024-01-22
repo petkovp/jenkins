@@ -1,18 +1,16 @@
 pipeline {
   agent {
-    kubernetes {
-      inheritFrom 'aws'
-    }
+    label 'aws'
   }
   stages {
     stage('Build') {
       steps {
-         echo "building"
-        }
+        echo "building"
       }
+    }
     stage('AWS S3 List') {
       steps {
-        container('aws') {
+        withAWS(credentials:'aws-credentials') {
           sh '''
           aws s3 ls
           '''
