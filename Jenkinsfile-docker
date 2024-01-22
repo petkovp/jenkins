@@ -1,6 +1,7 @@
 pipeline {
-  agent none
-
+  agent {
+    label 'kubernetes'
+  }
 environment {
    BRANCH = 'main'
    REGISTRY = 'docker.io/petkovp/ubuntu'
