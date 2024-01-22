@@ -2,7 +2,7 @@ listView('Payment Gateway') {
     description('The view of the Payment Gateway')
     jobs {
         names(
-        'MultiBranch',
+        'Payment-Gateway/MultiBranch',
         'First-Pipeline'
       )
     }
