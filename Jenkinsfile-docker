@@ -1,5 +1,6 @@
 pipeline {
-  agent node
+  agent none
+
 environment {
    BRANCH = 'main'
    REGISTRY = 'docker.io/petkovp/ubuntu'
