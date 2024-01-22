@@ -38,14 +38,11 @@ environment {
       }
     }
     stage('Build and Publish') {
-     when {
-        branch 'main'
-     }
       steps {
         container('docker') {
           sh '/kaniko/executor  --cache-ttl=48h --context . --dockerfile Dockerfile --destination ${REGISTRY}:${GIT_HASH}'
         }
       }
     }
-}
+  }
 }
