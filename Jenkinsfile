@@ -7,7 +7,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        container('aws') {
+        container('docker') {
           echo "building"
         }
       }
