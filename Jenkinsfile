@@ -1,6 +1,8 @@
 pipeline {
   agent {
-    label 'aws'
+    kubernetes {
+      inheritFrom 'aws'
+    }
   }
   stages {
     stage('Build') {
