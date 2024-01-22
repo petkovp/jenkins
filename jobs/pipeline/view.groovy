@@ -4,7 +4,8 @@ listView('Payment Gateway') {
         names(
         'Payment-Gateway',
         'Payment-Gateway/MultiBranch',
-        'First-Pipeline'
+        'First-Pipeline',
+        'Docker'
       )
     }
     columns {

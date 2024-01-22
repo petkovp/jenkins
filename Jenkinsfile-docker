@@ -1,0 +1,15 @@
+pipeline {
+  agent {
+    label 'nginx'
+  }
+  stages {
+    stage('Build') {
+      steps {
+        echo "building"
+        sh '''
+        curl -v abv.bg
+        '''
+      }
+    }
+  }
+}
