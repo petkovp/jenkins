@@ -12,9 +12,11 @@ pipeline {
       }
     stage('AWS S3 List') {
       steps {
+        container('aws') {
           sh '''
           aws s3 ls
           '''
+        }
       }
     }
   }
