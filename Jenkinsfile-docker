@@ -6,7 +6,7 @@ pipeline {
   }
 environment {
    BRANCH = 'main'
-   REGISTRY = 'docker.io/petkovp/ubuntu'
+   REGISTRY = '510389295972.dkr.ecr.eu-central-1.amazonaws.com/ubuntu'
    GIT_HASH = GIT_COMMIT.take(7)
 }
   stages {
@@ -21,7 +21,14 @@ environment {
       steps {
         container('docker') {
           sh '''
-          /kaniko/executor  --cache-ttl=48h --context . --dockerfile Dockerfile --destination ${REGISTRY}:${GIT_HASH}
+          /kaniko/executor  \
+            --cache-ttl=48h \
+            --context . \
+            --dockerfile Dockerfile \
+            --build-arg AWS_REGION=$AWS_REGION \
+            --build-arg AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
+            --build-arg AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
+            --destination ${REGISTRY}:${GIT_HASH}
           '''
         }
       }
