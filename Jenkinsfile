@@ -12,7 +12,7 @@ pipeline {
     }
     stage('AWS S3 List') {
       steps {
-        withAWS(credentials:'aws-credentials') {
+        container('aws') {
           sh '''
           aws s3 ls
           '''
