@@ -2,6 +2,7 @@ pipeline {
   agent {
     kubernetes {
       inheritFrom 'aws'
+      inheritFrom 'docker'
     }
   }
   stages {
