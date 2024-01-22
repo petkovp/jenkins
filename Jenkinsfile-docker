@@ -1,6 +1,8 @@
 pipeline {
   agent {
-    label 'kubernetes'
+    kubernetes {
+      yamlTemplate 'docker'
+    }
   }
 environment {
    BRANCH = 'main'
