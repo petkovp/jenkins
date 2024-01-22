@@ -7,7 +7,9 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        echo "building"
+        container('aws') {
+          echo "building"
+        }
       }
     }
     stage('AWS S3 List') {
