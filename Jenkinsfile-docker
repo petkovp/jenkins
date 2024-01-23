@@ -1,7 +1,7 @@
 pipeline {
   agent {
     kubernetes {
-      inheritFrom 'docker' 'aws-pod'
+      inheritFrom 'docker aws-pod'
     }
   }
 environment {
