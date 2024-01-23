@@ -1,7 +1,7 @@
 pipeline {
   agent {
     kubernetes {
-      inheritFrom 'docker'
+      inheritFrom 'docker' 'aws-pod'
     }
   }
 environment {
@@ -12,7 +12,7 @@ environment {
   stages {
     stage('Clone') {
       steps {
-        container('docker') {
+        container('aws-pod') {
           git branch: BRANCH, poll: false, url: 'https://github.com/petkovp/jenkins.git'
         }
       }
