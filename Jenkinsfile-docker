@@ -6,7 +6,7 @@ pipeline {
   }
 environment {
    BRANCH = "${GIT_BRANCH.split("/")[1]}"
-   REGISTRY = '510389295972.dkr.ecr.eu-central-1.amazonaws.com/ubuntu'
+   REGISTRY = '510389295972.dkr.ecr.eu-central-1.amazonaws.com/auto-test'
    GIT_HASH = GIT_COMMIT.take(7)
 }
   stages {
@@ -14,7 +14,7 @@ environment {
       steps {
         container('aws-pod') {
           sh '''
-          aws s3 ls
+          aws ecr create-repository --repository-name=auto-test --region $AWS_REGION
           '''
         }
       }
