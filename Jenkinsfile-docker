@@ -12,8 +12,7 @@ environment {
   stages {
     stage('Clone') {
       steps {
-        container('docker') {
-          git branch: BRANCH, poll: false, url: 'https://github.com/petkovp/jenkins.git'
+        git branch: BRANCH, poll: false, url: 'https://github.com/petkovp/jenkins.git'
         }
       }
     }
