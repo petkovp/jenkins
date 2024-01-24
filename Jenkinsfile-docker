@@ -10,11 +10,6 @@ environment {
    GIT_HASH = GIT_COMMIT.take(7)
 }
   stages {
-    stage('Clone') {
-      steps {
-        git branch: BRANCH, poll: false, url: 'https://github.com/petkovp/jenkins.git'
-      }
-    }
     stage('Build and Publish') {
       steps {
         container('docker') {
