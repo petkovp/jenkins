@@ -10,6 +10,13 @@ environment {
    GIT_HASH = GIT_COMMIT.take(7)
 }
   stages {
+    stage('Clone') {
+      steps {
+        container('docker') {
+          git branch: BRANCH, poll: false, url: 'https://github.com/petkovp/jenkins.git'
+        }
+      }
+    }
     stage('Build and Publish') {
       steps {
         container('docker') {
@@ -21,7 +28,7 @@ environment {
             --build-arg AWS_REGION=$AWS_REGION \
             --build-arg AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
             --build-arg AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
-            --destination ${REGISTRY}:$BRANCH-${BUILD_TIMESTAMP}
+            --destination ${REGISTRY}:${BRANCH}-${BUILD_TIMESTAMP}
           '''
         }
       }
