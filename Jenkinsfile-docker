@@ -6,7 +6,7 @@ pipeline {
   }
 environment {
    BRANCH = "${GIT_BRANCH.split("/")[1]}"
-   REGISTRY = '510389295972.dkr.ecr.eu-central-1.amazonaws.com/ubuntu'
+   REGISTRY = '510389295972.dkr.ecr.eu-central-1.amazonaws.com/auto-service'
    GIT_HASH = GIT_COMMIT.take(7)
 }
   stages {
