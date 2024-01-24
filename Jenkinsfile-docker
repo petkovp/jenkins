@@ -5,7 +5,7 @@ pipeline {
     }
   }
 environment {
-   BRANCH = "${BRANCH_NAME}"
+   BRANCH = "${GIT_BRANCH}"
    REGISTRY = '510389295972.dkr.ecr.eu-central-1.amazonaws.com/ubuntu'
    GIT_HASH = GIT_COMMIT.take(7)
 }
