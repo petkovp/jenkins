@@ -1,7 +1,7 @@
 pipeline {
   agent {
     kubernetes {
-      inheritFrom 'docker'
+      inheritFrom 'docker aws-pod'
     }
   }
 environment {
@@ -10,6 +10,15 @@ environment {
    GIT_HASH = GIT_COMMIT.take(7)
 }
   stages {
+    stage('Create ECR repository') {
+      steps {
+        container('aws-pod') {
+          sh '''
+          aws s3 ls
+          '''
+        }
+      }
+    }
     stage('Build and Publish') {
       steps {
         container('docker') {
