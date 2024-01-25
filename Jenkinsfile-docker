@@ -6,10 +6,10 @@ pipeline {
   }
 environment {
    BRANCH = "${GIT_BRANCH.split("/")[1]}"
-   REPOSITORY = 'ubuntu'
+   REPOSITORY = "ubuntu"
    REGISTRY = "510389295972.dkr.ecr.eu-central-1.amazonaws.com/${REPOSITORY}"
    TAG = "${BRANCH}-${BUILD_TIMESTAMP}"
-   GIT_HASH = GIT_COMMIT.take(7)
+   GIT_HASH = "GIT_COMMIT.take(7)"
    AWS_REGION = "eu-central-1"
 }
   stages {
