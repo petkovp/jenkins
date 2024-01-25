@@ -8,7 +8,6 @@ environment {
    BRANCH = '${GIT_BRANCH.split("/")[1]}'
    REPOSITORY = 'ubuntu'
    REGISTRY = '510389295972.dkr.ecr.eu-central-1.amazonaws.com/${REPOSITORY}'
-   TAG = ${BRANCH}-${BUILD_TIMESTAMP}
    GIT_HASH = GIT_COMMIT.take(7)
    AWS_REGION = 'eu-central-1'
 }
@@ -33,7 +32,7 @@ environment {
             --build-arg AWS_REGION=${AWS_REGION} \
             --build-arg AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} \
             --build-arg AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} \
-            --destination ${REGISTRY}:${TAG}
+            --destination ${REGISTRY}:${BRANCH}-${BUILD_TIMESTAMP}
           '''
         }
       }
