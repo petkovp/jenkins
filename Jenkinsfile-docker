@@ -5,16 +5,19 @@ pipeline {
     }
   }
 environment {
-   BRANCH = "${GIT_BRANCH.split("/")[1]}"
-   REGISTRY = '510389295972.dkr.ecr.eu-central-1.amazonaws.com/auto-test'
+   BRANCH = '${GIT_BRANCH.split("/")[1]}'
+   REPOSITORY = 'ubuntu'
+   REGISTRY = '510389295972.dkr.ecr.eu-central-1.amazonaws.com/${REPOSITORY}'
+   TAG = '${BRANCH}-${BUILD_TIMESTAMP}'
    GIT_HASH = GIT_COMMIT.take(7)
+   AWS_REGION = 'eu-central-1'
 }
   stages {
     stage('Create ECR repository') {
       steps {
         container('aws-pod') {
           sh '''
-          aws ecr describe-repositories --repository-names test --region eu-central-1 || aws ecr create-repository --repository-name test --region eu-central-1
+          aws ecr describe-repositories --repository-names ${REPOSITORY} --region ${AWS_REGION} || aws ecr create-repository --repository-name ${REPOSITORY} --region ${AWS_REGION}
           '''
         }
       }
@@ -27,10 +30,10 @@ environment {
             --cache-ttl=48h \
             --context . \
             --dockerfile Dockerfile \
-            --build-arg AWS_REGION=$AWS_REGION \
-            --build-arg AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
-            --build-arg AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
-            --destination ${REGISTRY}:${BRANCH}-${BUILD_TIMESTAMP}
+            --build-arg AWS_REGION=${AWS_REGION} \
+            --build-arg AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} \
+            --build-arg AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} \
+            --destination ${REGISTRY}:${TAG}
           '''
         }
       }
