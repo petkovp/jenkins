@@ -7,7 +7,7 @@ pipelineJob('SonarQube-Pipeline') {
             git {
                 remote {
                     name('Jenkins jobs')
-                    url('https://github.com/petkovp/sonarqube.git')
+                    url('https://github.com/piomin/sample-java-sonar.git')
                 }
                 branch('main')
             }
