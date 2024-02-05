@@ -17,7 +17,4 @@ multibranchPipelineJob('Payment-Gateway/MultiBranch') {
       discardOldItems {
       }
     }
-    options {
-      disableResume()
-    }
 }
