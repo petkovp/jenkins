@@ -8,13 +8,16 @@ multibranchPipelineJob('Payment-Gateway/MultiBranch') {
 
         }
     }
-     factory {
-        workflowBranchProjectFactory {
-        scriptPath('Jenkinsfile')
-        }
+    factory {
+       workflowBranchProjectFactory {
+       scriptPath('Jenkinsfile')
+       }
     }
     orphanedItemStrategy {
-        discardOldItems {
+      discardOldItems {
+      }
     }
-  }
+    options {
+      disableResume()
+    }
 }
