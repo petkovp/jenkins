@@ -1,3 +1,5 @@
+@Library('shared-library') _
+
 pipeline {
   agent {
     kubernetes {
@@ -25,16 +27,7 @@ environment {
     stage('Build and Publish') {
       steps {
         container('docker') {
-          sh '''
-          /kaniko/executor  \
-            --cache-ttl=48h \
-            --context . \
-            --dockerfile Dockerfile \
-            --build-arg AWS_REGION=${AWS_REGION} \
-            --build-arg AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} \
-            --build-arg AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} \
-            --destination ${REGISTRY}:${TAG}
-          '''
+        createDockerImage()
         }
       }
     }
