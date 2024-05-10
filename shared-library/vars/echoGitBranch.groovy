@@ -1,3 +1,3 @@
 def call() {
-    sh "echo ${TAG}"
+    sh "echo Hello World"
 }
