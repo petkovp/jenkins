@@ -1,10 +1,10 @@
-Jenkins.instance.queue.items.findAll { !it.task.name.contains("Extenda") }.each {
-  println "Cancel ${it.task.name}"
-  Jenkins.instance.queue.cancel(it.task)
-}
-Jenkins.instance.items.each {
-  stopJobs(it)
-}
+// Jenkins.instance.queue.items.findAll { !it.task.name.contains("Extenda") }.each {
+//   println "Cancel ${it.task.name}"
+//   Jenkins.instance.queue.cancel(it.task)
+// }
+// Jenkins.instance.items.each {
+//   stopJobs(it)
+// }
 def stopJobs(job) {
   if (job in jenkins.branch.OrganizationFolder) {
     // Git behaves well so no need to traverse it.
@@ -23,4 +23,4 @@ def stopJobs(job) {
   }
 }
 
-return true
+// return true
