@@ -1,4 +1,7 @@
 def call() {
-    sh 'mvn clean package sonar:sonar' &&
-    "waitForQualityGate abortPipeline: false"
+    sh 'mvn clean package sonar:sonar'
+}
+
+int quality () {
+    waitForQualityGate abortPipeline: false
 }
