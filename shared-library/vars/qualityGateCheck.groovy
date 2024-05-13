@@ -1,1 +1,1 @@
-def qualitygate = waitForQualityGate()
+def qualitygate = waitForQualityGate abortPipeline: false
