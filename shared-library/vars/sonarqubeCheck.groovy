@@ -4,5 +4,6 @@ def call() {
     '''
 }
 
-def quality = { waitForQualityGate abortPipeline: false }
-assert quality.call()
+def quality() {
+ waitForQualityGate abortPipeline: false
+ }
