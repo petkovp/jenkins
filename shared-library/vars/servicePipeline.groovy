@@ -13,7 +13,7 @@ def call(pipelineParams) {
       stages {
         stage('Build') {
           steps {
-            echo ${TAG}
+            echo "${TAG}"
           }
         }
         stage('SonarQube Check') {
