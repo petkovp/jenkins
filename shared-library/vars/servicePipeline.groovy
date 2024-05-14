@@ -7,8 +7,8 @@ def call(pipelineParams) {
         }
       }
     environment {
-       BRANCH = "${GIT_BRANCH.split("/")[1]}"
-       TAG = "${BRANCH}-${BUILD_TIMESTAMP}"
+       BRANCH = pipelineParams.Branch
+       TAG = pipelineParams.Tag
     }
       stages {
         stage('Build') {
