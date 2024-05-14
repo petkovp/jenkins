@@ -7,8 +7,8 @@ def call(pipelineParams) {
         }
       }
     environment {
-       BRANCH = pipelineParams.Branch
-       TAG = pipelineParams.Tag
+       BRANCH = 'pipelineParams.Branch'
+       TAG = 'pipelineParams.Tag'
     }
       stages {
         stage('Build') {
