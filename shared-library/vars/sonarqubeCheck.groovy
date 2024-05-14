@@ -1,4 +1,6 @@
 def call() {
-    echo "Hello"
-    sh 'mvn clean package sonar:sonar'
+    mvnBuild () {
+        sh 'mvn clean package sonar:sonar'
+    }
+    waitForQualityGate abortPipeline: false
 }
