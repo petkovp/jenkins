@@ -7,13 +7,13 @@ def call(pipelineParams) {
         }
       }
     environment {
-       BRANCH = 'pipelineParams.Branch'
-       TAG = 'pipelineParams.Tag'
+       BRANCH = "${GIT_BRANCH.split("/")[1]}"
+       TAG = "${BRANCH}-${BUILD_TIMESTAMP}"
     }
       stages {
         stage('Build') {
           steps {
-            echo pipelineParams.BRANCH
+            echo ${TAG}
           }
         }
         stage('SonarQube Check') {
