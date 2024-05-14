@@ -1,7 +1,9 @@
 def call() {
+    echo "Hello"
     sh 'mvn clean package sonar:sonar'
 }
 
 def quality() {
-   waitForQualityGate abortPipeline: false'
+   echo "Print"
+   waitForQualityGate abortPipeline: false
 }
